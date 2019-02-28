@@ -1,34 +1,32 @@
-
-let Plugin = require('taiko-plugin');
 let TracingHandler = require('./tracingHandler');
+let id = 'diagnostics';
 
-class Diagnostics extends Plugin {
+let tracingHandler;
 
-    init(cri) {
-        this.tracingHandler = new TracingHandler(cri.Tracing, cri.IO);
-    }
+// TODO: Add js docs
 
-    id() {
-        return 'diagnostics';
-    }
-
-    async startTracing() {
-        await this.tracingHandler.startTracing();
-        return { description: 'Browser tracing started' };
-    }
-
-    async endTracing() {
-        await this.tracingHandler.endTracing();
-        return { description: 'Browser tracing ended' };
-    }
-
-    async getSpeedIndex() {
-        return await this.tracingHandler.getSpeedIndex();
-    }
-
-    async getTracingLogs() {
-        return await this.tracingHandler.getTracingLogs();
-    }
+module.exports.id = () => {
+    return id;
 }
 
-module.exports = Diagnostics;
+module.exports.init = (taiko) => {
+    tracingHandler = new TracingHandler(taiko.client().Tracing, taiko.client().IO);
+}
+
+module.exports.startTracing = async () => {
+    await tracingHandler.startTracing();
+    return { description: 'Browser tracing started' };
+}
+
+module.exports.endTracing = async () => {
+    await tracingHandler.endTracing();
+    return { description: 'Browser tracing ended' };
+}
+
+module.exports.getSpeedIndex = async () => {
+    return await tracingHandler.getSpeedIndex();
+}
+
+module.exports.getTracingLogs = async () => {
+    return await tracingHandler.getTracingLogs();
+}
