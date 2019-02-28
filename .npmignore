@@ -1,0 +1,7 @@
+docs/*
+test/*
+build/*
+.local-chromium
+.eslintrc
+.vscode
+.github
