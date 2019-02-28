@@ -6,9 +6,9 @@ This is a experimental plugin for taiko and used for validating and experimentin
 
 ## Usages
 
-* npm init -y
-* npm install git://github.com/getgauge/taiko.git#plugin-support
-* npm install git://github.com/getgauge-contrib/taiko-diagnostics.git
+* `npm init -y`
+* `npm install git://github.com/getgauge/taiko.git#plugin-support --save`
+* `npm install git://github.com/getgauge-contrib/taiko-diagnostics.git --save`
 * Create a file `test.js` with content
 
 ```javascript
