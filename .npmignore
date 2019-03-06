@@ -1,7 +1,5 @@
-docs/*
 test/*
-build/*
-.local-chromium
+src/*
 .eslintrc
 .vscode
 .github

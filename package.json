@@ -2,13 +2,17 @@
   "name": "taiko-diagnostics",
   "version": "0.0.1",
   "description": "A plugin for taiko which provides some diagnostics features",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -rf lib && tsc"
   },
   "author": "BugDiver",
   "license": "MIT",
   "dependencies": {
     "speedline": "^1.4.2"
+  },
+  "devDependencies": {
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3333"
   }
 }
