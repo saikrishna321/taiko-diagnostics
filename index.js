@@ -1,15 +1,12 @@
 let TracingHandler = require('./tracingHandler');
-let id = 'diagnostics';
 
 let tracingHandler;
 
 // TODO: Add js docs
 
-module.exports.id = () => {
-    return id;
-}
+module.exports.ID  = 'diagnostics'
 
-module.exports.init = (taiko) => {
+module.exports.clientHandler = (taiko) => {
     tracingHandler = new TracingHandler(taiko.client().Tracing, taiko.client().IO);
 }
 
