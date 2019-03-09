@@ -2,10 +2,10 @@
   "name": "taiko-diagnostics",
   "version": "0.0.1",
   "description": "A plugin for taiko which provides some diagnostics features",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "jest",
-    "build": "babel source --presets=@babel/preset-env --out-dir distribution"
+    "build": "babel src -d lib"
   },
   "jest": {
     "verbose": true

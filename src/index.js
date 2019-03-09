@@ -1,4 +1,4 @@
-import TracingHandler from './lib/tracingHandler';
+import TracingHandler from './tracingHandler';
 
 let tracingHandler;
 
