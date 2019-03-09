@@ -1,29 +1,27 @@
-let TracingHandler = require('./tracingHandler');
+import TracingHandler from './tracingHandler';
 
 let tracingHandler;
 
-// TODO: Add js docs
+export const ID  = 'diagnostics'
 
-module.exports.ID  = 'diagnostics'
-
-module.exports.clientHandler = (taiko) => {
+export function clientHandler(taiko) {
     tracingHandler = new TracingHandler(taiko.client().Tracing, taiko.client().IO);
 }
 
-module.exports.startTracing = async () => {
+export async function startTracing() {
     await tracingHandler.startTracing();
     return { description: 'Browser tracing started' };
 }
 
-module.exports.endTracing = async () => {
+export async function endTracing() {
     await tracingHandler.endTracing();
     return { description: 'Browser tracing ended' };
 }
 
-module.exports.getSpeedIndex = async () => {
+export async function getSpeedIndex() {
     return await tracingHandler.getSpeedIndex();
 }
 
-module.exports.getTracingLogs = async () => {
+export async function getTracingLogs() {
     return await tracingHandler.getTracingLogs();
 }

@@ -1,4 +1,4 @@
-var speedline = require('speedline');
+import speedline from 'speedline';
 
 class TracingHandler {
     constructor(tracing, io) {
@@ -90,4 +90,4 @@ const DEFAULT_TRACING_CATEGORIES = [
     'disabled-by-default-devtools.screenshot'
 ];
 
-module.exports = TracingHandler;
+export default TracingHandler;
