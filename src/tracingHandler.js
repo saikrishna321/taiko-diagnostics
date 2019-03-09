@@ -48,7 +48,6 @@ class TracingHandler {
 
             if (eof) {
                 isEOF = true;
-                console.log(`finished fetching IO stream with id ${stream}`);
                 return JSON.parse(tracingChunks);
             }
         }

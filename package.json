@@ -4,11 +4,19 @@
   "description": "A plugin for taiko which provides some diagnostics features",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
+  },
+  "jest": {
+    "verbose": true
   },
   "author": "BugDiver",
   "license": "MIT",
   "dependencies": {
-    "speedline": "^1.4.2"
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babel-jest": "^24.3.1",
+    "jest": "^24.3.1",
+    "speedline": "^1.4.2",
+    "taiko": "git://github.com/getgauge/taiko.git"
   }
 }
