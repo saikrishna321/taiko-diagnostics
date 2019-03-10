@@ -1,6 +1,5 @@
-
 import { openBrowser, loadPlugin, goto, closeBrowser } from 'taiko';
-import { ID, clientHandler, startTracing, endTracing, getSpeedIndex } from '../source/index';
+import { ID, clientHandler, startTracing, endTracing, getSpeedIndex } from '../../src/index';
 loadPlugin(ID, clientHandler);
 
 beforeEach(async () => {
