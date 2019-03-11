@@ -10,15 +10,22 @@
   "jest": {
     "verbose": true
   },
-  "author": "BugDiver",
+  "author": "Sai Krishna <saikrishna321@yahoo.com> (http://github.com/saikrishna321)",
+  "maintainers": [
+    {
+      "name": "BugDriver"
+    }
+  ],
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
     "babel-jest": "^24.3.1",
     "jest": "^24.3.1",
-    "speedline": "^1.4.2",
-    "@babel/cli": "^7.2.3",
-    "@babel/preset-env": "^7.3.4",
     "taiko": "git://github.com/getgauge/taiko.git"
+  },
+  "dependencies": {
+    "speedline": "^1.4.2"
   }
 }
