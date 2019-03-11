@@ -1,15 +1,15 @@
-# taiko-diagnostics [Experimental]
+# taiko-diagnostics
 
-A plugin for taiko which provides some diagnostics features
+A plugin for taiko which provides some diagnostics features like measuring speedindex, performance metrics of webpage.
 
-This is a experimental plugin for taiko and used for validating and experimenting an plugin architecture for taiko.
 
-## Usages
+## Installation
 
-* `npm init -y`
 * `npm install git://github.com/getgauge/taiko.git --save`
 * `npm install git://github.com/getgauge-contrib/taiko-diagnostics.git --save`
-* Create a file `test.js` with content
+
+
+## Usage
 
 ```javascript
 const { openBrowser, loadPlugin, goto, closeBrowser } = require('taiko');
@@ -32,6 +32,48 @@ loadPlugin(ID, clientHandler);
 })();
 ```
 
-Note that `startTracing`,`endTracing`, and `getSpeedIndex` apis are not from `taiko`. These are given by the plugin.
+### `startTracing()` Command
 
-* Run `node foo.js`
+Start tracing the browser.
+
+```js
+startTracing()
+```
+
+### `endTracing` Command
+
+Stop tracing the browser.
+
+```js
+endTracing()
+```
+
+### `getTraceLogs` Command
+
+Returns the tracelogs that was captured within the tracing period. You can use this command to store the trace logs on the file system to analyse the trace via Chrome DevTools interface.
+
+```js
+startTracing()
+goto('https://github.com/');
+endTracing()
+
+fs.writeFileSync('/path/to/tracelog.json', JSON.stringify(await getTraceLogs()))
+```
+
+### `getSpeedIndex` Command
+
+Returns the [Speed Index](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) and [Perceptual Speed Index](https://developers.google.com/web/tools/lighthouse/audits/speed-index) from the page load that happened between the tracing period.
+
+```js
+startTracing()
+goto('https://github.com/');
+endTracing()
+
+console.log(getSpeedIndex())
+// outputs
+// { speedIndex: 789.6634800064564,
+//   perceptualSpeedIndex: 876.0901860232523 }
+```
+
+
+Note that `startTracing`,`endTracing`, and `getSpeedIndex` apis are not from `taiko`. These are given by the plugin.
