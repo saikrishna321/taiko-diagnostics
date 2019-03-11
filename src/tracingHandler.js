@@ -1,4 +1,4 @@
-var speedline = require('speedline');
+import speedline from 'speedline';
 
 class TracingHandler {
     constructor(tracing, io) {
@@ -48,7 +48,6 @@ class TracingHandler {
 
             if (eof) {
                 isEOF = true;
-                console.log(`finished fetching IO stream with id ${stream}`);
                 return JSON.parse(tracingChunks);
             }
         }
@@ -91,4 +90,4 @@ const DEFAULT_TRACING_CATEGORIES = [
     'disabled-by-default-devtools.screenshot'
 ];
 
-module.exports = TracingHandler;
+export default TracingHandler;
