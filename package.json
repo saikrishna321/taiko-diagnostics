@@ -5,7 +5,9 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "jest",
-    "build": "babel src -d lib"
+    "build": "babel src -d lib",
+    "eslint": "eslint '**/*.js' --ext '**/*.jsx'",
+    "eslint-fix": "eslint --fix '**/*.js' --ext '**/*.jsx'"
   },
   "jest": {
     "verbose": true
@@ -23,6 +25,9 @@
     "@babel/preset-env": "^7.3.4",
     "babel-jest": "^24.3.1",
     "jest": "^24.3.1",
+    "eslint": "^4.7.2",
+    "eslint-plugin-import": "^2.8.0",
+    "babel-eslint": "^10.0.1",
     "taiko": "git://github.com/getgauge/taiko.git"
   },
   "dependencies": {
