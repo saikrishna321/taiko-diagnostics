@@ -93,10 +93,8 @@ test('get performance metric', async () => {
         mockedTaiko.client().IO
     );
     tracing.traceEvents = tracingEvents;
-    const speedIndex = await tracing.getPerformanceMetrics();
-    // eslint-disable-next-line no-console
-    console.log(speedIndex);
-    expect(speedIndex).toEqual({
+    const performance = await tracing.getPerformanceMetrics();
+    expect(performance).toEqual({
         firstPaint: 735.666,
         firstContentfulPaint: 735.669,
         firstMeaningfulPaint: 735.671,
