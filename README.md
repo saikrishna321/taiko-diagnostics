@@ -75,5 +75,24 @@ console.log(getSpeedIndex())
 //   perceptualSpeedIndex: 876.0901860232523 }
 ```
 
+### `getPerformanceMetrics()` Command
+
+```js
+startTracing()
+goto('https://github.com/');
+endTracing()
+
+console.log(getPerformanceMetrics())
+// outputs
+//{
+//    firstPaint: 735.666,
+//    firstContentfulPaint: 735.669,
+//    firstMeaningfulPaint: 735.671,
+//    domContentLoaded: 574.546,
+//    timeToFirstInteractive: 735.671,
+//    load: 1379.895
+//    }
+```
+
 
 Note that `startTracing`,`endTracing`, and `getSpeedIndex` apis are not from `taiko`. These are given by the plugin.
