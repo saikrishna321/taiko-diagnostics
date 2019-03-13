@@ -40,8 +40,8 @@ class TracingHandler {
         return { speedIndex, perceptualSpeedIndex };
     }
 
-    getPerformanceMetrics () {
-        const traces = TraceOfTab.compute(this.traceEvents)
+    async getPerformanceMetrics () {
+        const traces = TraceOfTab.compute(await this.traceEvents)
         const audit = new FirstInteractiveAudit()
         let timeToFirstInteract = null
 
