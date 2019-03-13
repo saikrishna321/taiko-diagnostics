@@ -48,7 +48,7 @@ Stop tracing the browser.
 endTracing()
 ```
 
-### `getTraceLogs` Command
+### `getTracingLogs` Command
 
 Returns the tracelogs that was captured within the tracing period. You can use this command to store the trace logs on the file system to analyse the trace via Chrome DevTools interface.
 
@@ -57,7 +57,7 @@ startTracing()
 goto('https://github.com/');
 endTracing()
 
-fs.writeFileSync('/path/to/tracelog.json', JSON.stringify(await getTraceLogs()))
+fs.writeFileSync('/path/to/tracelog.json', JSON.stringify(await getTracingLogs()))
 ```
 
 ### `getSpeedIndex` Command
