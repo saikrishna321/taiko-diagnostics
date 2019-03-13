@@ -1,4 +1,4 @@
-[![Build Status](https://dev.azure.com/saikrishna321/taiko-diagnostics/_apis/build/status/saikrishna321.taiko-diagnostics?branchName=master)](https://dev.azure.com/saikrishna321/taiko-diagnostics/_build/latest?definitionId=4&branchName=master)
+[![Build Status](https://dev.azure.com/saikrishna321/taiko-diagnostics/_apis/build/status/saikrishna321.taiko-diagnostics?branchName=master)](https://dev.azure.com/saikrishna321/taiko-diagnostics/_build/latest?definitionId=4&branchName=master) [![npm version](https://badge.fury.io/js/taiko-diagnostics.svg)](https://badge.fury.io/js/taiko-diagnostics)[![NPM](https://nodei.co/npm/taiko-diagnostics.png)](https://nodei.co/npm/taiko-diagnostics/)
 
 # taiko-diagnostics
 
