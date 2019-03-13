@@ -25,3 +25,7 @@ export async function getSpeedIndex() {
 export async function getTracingLogs() {
     return await tracingHandler.getTracingLogs();
 }
+
+export async function getPerformanceMetrics() {
+    return await tracingHandler.getPerformanceMetrics();
+}

@@ -1,5 +1,7 @@
 import speedline from 'speedline';
-
+import TraceOfTab from './lighthouse/tabTracing'
+import FirstInteractiveAudit from './lighthouse/firstInteractive'
+var log = require('npmlog');
 class TracingHandler {
     constructor(tracing, io) {
         this._io = io;
@@ -36,6 +38,27 @@ class TracingHandler {
     async getSpeedIndex() {
         const { speedIndex, perceptualSpeedIndex } = await speedline(await this.traceEvents);
         return { speedIndex, perceptualSpeedIndex };
+    }
+
+    getPerformanceMetrics () {
+        const traces = TraceOfTab.compute(this.traceEvents)
+        const audit = new FirstInteractiveAudit()
+        let timeToFirstInteract = null
+
+        try {
+            timeToFirstInteract = audit.computeWithArtifacts(traces).timeInMs
+        } catch (e) {
+            log.warn(`Failed to get timeToFirstInteractive due to "${e.friendlyMessage}"`)
+        }
+
+        return {
+            firstPaint: traces.timings.firstPaint,
+            firstContentfulPaint: traces.timings.firstContentfulPaint,
+            firstMeaningfulPaint: traces.timings.firstMeaningfulPaint,
+            domContentLoaded: traces.timings.domContentLoaded,
+            timeToFirstInteractive: timeToFirstInteract,
+            load: traces.timings.load
+        }
     }
 
     async _readIOStream(stream) {
