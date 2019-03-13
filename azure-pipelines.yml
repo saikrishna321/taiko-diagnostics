@@ -23,3 +23,11 @@ steps:
 - script: |
     npm test
   displayName: 'npm test'
+
+# Publish Test Results
+# Publish Test Results to Azure Pipelines/TFS
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit, cTest
+    testResultsFiles: 'junit.xml' 
+    searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
