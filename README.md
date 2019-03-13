@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/saikrishna321/taiko-diagnostics/_apis/build/status/saikrishna321.taiko-diagnostics?branchName=master)](https://dev.azure.com/saikrishna321/taiko-diagnostics/_build/latest?definitionId=4&branchName=master)
+
 # taiko-diagnostics
 
 A plugin for taiko which provides some diagnostics features like measuring speedindex, performance metrics of webpage.
