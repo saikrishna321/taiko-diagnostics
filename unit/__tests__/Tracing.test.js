@@ -74,8 +74,8 @@ test('get speed index', async () => {
     tracing.traceEvents = tracingEvents;
     const speedIndex = await tracing.getSpeedIndex();
     expect(speedIndex).toEqual({
-        speedIndex: 735.2189999735356,
-        perceptualSpeedIndex: 832.5956931637686
+        speedIndex: 2614.742680014968,
+        perceptualSpeedIndex: 2606.6120281404724
     });
 });
 
@@ -95,11 +95,11 @@ test('get performance metric', async () => {
     tracing.traceEvents = tracingEvents;
     const performance = await tracing.getPerformanceMetrics();
     expect(performance).toEqual({
-        firstPaint: 735.666,
-        firstContentfulPaint: 735.669,
-        firstMeaningfulPaint: 735.671,
-        domContentLoaded: 574.546,
-        timeToFirstInteractive: 735.671,
-        load: 1379.895
+        firstPaint: 2570.069,
+        firstContentfulPaint: 2570.071,
+        firstMeaningfulPaint: 2715.476,
+        domContentLoaded: 2616.842,
+        timeToFirstInteractive: null,
+        load: 2832.174
     });
 });
