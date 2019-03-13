@@ -7,8 +7,7 @@ A plugin for taiko which provides some diagnostics features like measuring speed
 
 ## Installation
 
-* `npm install git://github.com/getgauge/taiko.git --save`
-* `npm install git://github.com/getgauge-contrib/taiko-diagnostics.git --save`
+* `npm install taiko-diagnostics --save`
 
 
 ## Usage
@@ -77,7 +76,7 @@ console.log(getSpeedIndex())
 //   perceptualSpeedIndex: 876.0901860232523 }
 ```
 
-### `getPerformanceMetrics()` Command
+### `getPerformanceMetrics` Command
 
 ```js
 startTracing()
