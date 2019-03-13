@@ -4,7 +4,7 @@
   "description": "A plugin for taiko which provides some diagnostics features",
   "main": "lib/index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest unit/__tests__/Tracing.test.js",
     "build": "babel src -d lib",
     "eslint": "eslint '**/*.js' --ext '**/*.jsx'",
     "eslint-fix": "eslint --fix '**/*.js' --ext '**/*.jsx'"
