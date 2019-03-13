@@ -31,7 +31,7 @@
     "babel-eslint": "^10.0.1",
     "jest-junit": "^6.3.0",
     "taiko": "git://github.com/getgauge/taiko.git",
-    "npmlog": "^4.1.2",
+    "npmlog": "^4.1.2"
   },
   "dependencies": {
     "speedline": "^1.4.2"
