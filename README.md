@@ -95,7 +95,7 @@ console.log(getPerformanceMetrics())
 //    }
 ```
 
-### getCssCoverage Command
+### `getCssCoverage` Command
 
 ```js
 startCssTracing();

@@ -25,9 +25,12 @@ class CSSCoverage {
         let cssResults = await css.stopRuleUsageTracking();
         await Promise.all([css.disable()]);
         cssRuleUsage = await cssResults;
+        this._enabled = false;
     }
 
     async getCssCoverage() {
+        if ( this._enabled == undefined || this._enabled === true)
+            assert(false, 'startCssTracking() API has not been called nor stopCssTracking() API')
         let usedLength = 0, totalLength = 0;
         await stylesheets.forEach(function(stylesheet) {
             totalLength += stylesheet.length;
