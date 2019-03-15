@@ -25,6 +25,9 @@ steps:
     npm run integration
   displayName: 'npm test'
 
+- script: |
+    npm run integration
+  displayName: 'Integration Test'
 # Publish Test Results
 # Publish Test Results to Azure Pipelines/TFS
 - task: PublishTestResults@2
