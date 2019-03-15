@@ -103,7 +103,7 @@ goto('https://unused-css-example-site-qijunirqpu.now.sh');
 stopCssTracing();
 const cssCoverage = await getCssCoverage();
 // { unUsedCss: 55 } in percentage
-
+```
 ![Coverage tab](/images/css.png)
 
 
