@@ -32,5 +32,13 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit, cTest
-    testResultsFiles: '**.xml' 
+    testResultsFiles: 'junit.xml'
+    testRunTitle: 'unit test'
+    searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit, cTest
+    testResultsFiles: 'int-junit.xml'
+    testRunTitle: 'Integration test'
     searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
