@@ -1,5 +1,7 @@
 import { openBrowser, loadPlugin, goto, closeBrowser } from 'taiko';
-import { ID, clientHandler, startTracing, endTracing, getSpeedIndex, getPerformanceMetrics } from '../../src/index';
+import { ID, clientHandler, startTracing, startCssTracing,
+    stopCssTracing, endTracing, getSpeedIndex,
+    getCssCoverage, getPerformanceMetrics } from '../../src/index';
 loadPlugin(ID, clientHandler);
 
 beforeEach(async () => {
@@ -27,4 +29,13 @@ test('Should return performance metric', async () => {
     await endTracing();
     const performance = await getPerformanceMetrics();
     expect(performance.firstPaint).toBeLessThan(4 * 1000)
+});
+
+test('Should return performance metric', async () => {
+    jest.setTimeout(30000);
+    await startCssTracing();
+    await goto('https://unused-css-example-site-qijunirqpu.now.sh');
+    await stopCssTracing();
+    const cssCoverage = await getCssCoverage();
+    expect(cssCoverage.unUsedCss).toBeGreaterThan(50);
 });

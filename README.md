@@ -95,5 +95,17 @@ console.log(getPerformanceMetrics())
 //    }
 ```
 
+### getCssCoverage Command
+
+```js
+startCssTracing();
+goto('https://unused-css-example-site-qijunirqpu.now.sh');
+stopCssTracing();
+const cssCoverage = await getCssCoverage();
+// { unUsedCss: 55 } in percentage
+
+![Coverage tab](/images/css.png)
+
+
 
 Note that `startTracing`,`endTracing`, and `getSpeedIndex` apis are not from `taiko`. These are given by the plugin.
