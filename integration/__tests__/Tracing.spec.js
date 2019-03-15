@@ -31,7 +31,7 @@ test('Should return performance metric', async () => {
     expect(performance.firstPaint).toBeLessThan(4 * 1000)
 });
 
-test('Should return performance metric', async () => {
+test('Should return unused coverage', async () => {
     jest.setTimeout(30000);
     await startCssTracing();
     await goto('https://unused-css-example-site-qijunirqpu.now.sh');
