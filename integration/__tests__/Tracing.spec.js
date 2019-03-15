@@ -4,6 +4,7 @@ import { ID, clientHandler, startTracing, startCssTracing,
     getCssCoverage, getPerformanceMetrics } from '../../src/index';
 loadPlugin(ID, clientHandler);
 
+jest.setTimeout(30000);
 beforeEach(async () => {
     await openBrowser();
 });
@@ -13,7 +14,6 @@ afterEach(async () => {
 });
 
 test('Should return speedindex and perceptualSpeedIndex', async () => {
-    jest.setTimeout(30000);
     await startTracing();
     await goto('https://github.com/');
     await endTracing();
@@ -23,16 +23,14 @@ test('Should return speedindex and perceptualSpeedIndex', async () => {
 });
 
 test('Should return performance metric', async () => {
-    jest.setTimeout(30000);
     await startTracing();
     await goto('https://jasper-bison.glitch.me/');
     await endTracing();
     const performance = await getPerformanceMetrics();
-    expect(performance.firstPaint).toBeLessThan(4 * 1000)
+    expect(performance.firstPaint).toBeLessThan(5 * 1000)
 });
 
 test('Should return unused coverage', async () => {
-    jest.setTimeout(30000);
     await startCssTracing();
     await goto('https://unused-css-example-site-qijunirqpu.now.sh');
     await stopCssTracing();
