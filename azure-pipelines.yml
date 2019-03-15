@@ -29,5 +29,5 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit, cTest
-    testResultsFiles: 'junit.xml' 
+    testResultsFiles: '**.xml' 
     searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
