@@ -4,11 +4,9 @@
 
 A plugin for taiko which provides some diagnostics features like measuring speedindex, performance metrics of webpage.
 
-
 ## Installation
 
 * `npm install taiko-diagnostics --save`
-
 
 ## Usage
 
@@ -104,8 +102,49 @@ stopCssTracing();
 const cssCoverage = await getCssCoverage();
 // { unUsedCss: 55 } in percentage
 ```
+
 ![Coverage tab](/images/css.png)
 
+## Use in Taiko REPL
 
+To launch the REPL type `taiko` in your favorite terminal application. This will launch the Taiko Prompt.
+
+e.g
+`Version: 0.7.0 (Chromium:74.0.3723.0)
+Type .api for help and .exit to quit`
+
+Add the following to your REPL terminal prompt:
+
+```js
+const {ID, clientHandler, startTracing, endTracing, getCssCoverage, startCssTracing, stopCssTracing, getPerformanceMetrics, getSpeedIndex } = require('taiko-diagnostics');
+
+loadPlugin(ID, clientHandler);
+```
+
+You should now have full access to all of the diagnostics in the taiko REPL window
+
+## REPL example
+
+```js
+> openBrowser()
+ ✔ Browser opened
+> startTracing()
+ ✔ Browser tracing started
+> goto('https://github.com/');
+ ✔ Navigated to url "https://github.com/"
+> endTracing();
+ ✔ Browser tracing ended
+> getSpeedIndex();
+{ speedIndex: 30631.375729995667,
+  perceptualSpeedIndex: 30634.177980202476 }
+> getPerformanceMetrics();
+info Detected renderer thread by 'TracingStartedInBrowser' event: pid 69317, tid 775
+{ firstPaint: 834.819,
+  firstContentfulPaint: 834.821,
+  firstMeaningfulPaint: 997.381,
+  domContentLoaded: 1073.878,
+  timeToFirstInteractive: 1194.132,
+  load: 1208.64 }
+  ```
 
 Note that `startTracing`,`endTracing`, and `getSpeedIndex` apis are not from `taiko`. These are given by the plugin.
