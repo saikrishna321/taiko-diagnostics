@@ -37,6 +37,7 @@
     "taiko": "git://github.com/getgauge/taiko.git"
   },
   "dependencies": {
+    "delay": "^4.1.0",
     "npmlog": "^4.1.2",
     "speedline": "^1.4.2"
   }
