@@ -1,14 +1,17 @@
 import TracingHandler from './tracingHandler';
 import CSSHandler from './cssHandler';
+import LogHandler from './logHandler';
 
 let tracingHandler;
 let cssHandler;
+let logHandler;
 
 export const ID  = 'diagnostics'
 
 export function clientHandler(taiko) {
     tracingHandler = new TracingHandler(taiko.client().Tracing, taiko.client().IO);
     cssHandler = new CSSHandler(taiko.client().CSS);
+    logHandler = new LogHandler(taiko.client().Page, taiko.client().Network, taiko.client().Log);
 }
 
 export async function startTracing() {
@@ -43,4 +46,8 @@ export async function stopCssTracing() {
 
 export async function getCssCoverage() {
     return await cssHandler.getCssCoverage();
+}
+
+export function logConsoleInfo() {
+    return logHandler.logEntry();
 }

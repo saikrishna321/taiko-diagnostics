@@ -103,7 +103,26 @@ const cssCoverage = await getCssCoverage();
 // { unUsedCss: 55 } in percentage
 ```
 
-![Coverage tab](/images/css.png)
+![Coverage tab](https://raw.githubusercontent.com/saikrishna321/taiko-diagnostics/master/images/css.png)
+
+
+### `logConsoleInfo` command
+```js
+logConsoleInfo(); 
+await goto('http://note.ly');
+await click('Login')
+Make sure not to add `await` as logConsoleInfo enables log Listener.
+
+  //{  
+  // "source":"network",
+  // "level":"error",
+  // "text":"Failed to load resource: the server responded with a status of 404 (Not Found)",
+  // "timestamp":1553184257940.79,
+  // "url":"http://note.ly/favicon.ico",
+  // "networkRequestId":"1000029038.125"
+  //}}
+
+```
 
 ## Use in Taiko REPL
 
