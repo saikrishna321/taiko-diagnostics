@@ -11,7 +11,7 @@ export const ID  = 'diagnostics'
 export function clientHandler(taiko) {
     tracingHandler = new TracingHandler(taiko.client().Tracing, taiko.client().IO);
     cssHandler = new CSSHandler(taiko.client().CSS);
-    screen = new ScreenRecorder(taiko.client().Page);
+    screen = new ScreenRecorder(taiko.client().Page, taiko.client().DOM, taiko.client().Overlay);
 }
 
 export async function startTracing() {

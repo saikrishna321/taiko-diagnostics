@@ -5,7 +5,7 @@ import { ID, clientHandler, startTracing, startCssTracing,
 
 loadPlugin(ID, clientHandler);
 
-jest.setTimeout(30000);
+jest.setTimeout(50000);
 beforeEach(async () => {
     await openBrowser( { headless: false });
 });
