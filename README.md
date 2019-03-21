@@ -107,19 +107,12 @@ const cssCoverage = await getCssCoverage();
 
 ## Use in Taiko REPL
 
-To launch the REPL type `taiko` in your favorite terminal application. This will launch the Taiko Prompt.
+To launch the REPL type `taiko --plugin taiko-diagnostics` in your favorite terminal application. This will launch the Taiko Prompt.
 
 e.g
 `Version: 0.7.0 (Chromium:74.0.3723.0)
 Type .api for help and .exit to quit`
 
-Add the following to your REPL terminal prompt:
-
-```js
-const {ID, clientHandler, startTracing, endTracing, getCssCoverage, startCssTracing, stopCssTracing, getPerformanceMetrics, getSpeedIndex } = require('taiko-diagnostics');
-
-loadPlugin(ID, clientHandler);
-```
 
 You should now have full access to all of the diagnostics in the taiko REPL window
 
