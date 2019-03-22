@@ -109,18 +109,17 @@ const cssCoverage = await getCssCoverage();
 ### `logConsoleInfo` command
 ```js
 logConsoleInfo(); 
-await goto('http://note.ly');
-await click('Login')
+await goto('gauge.org/sdfsd');
 Make sure not to add `await` as logConsoleInfo enables log Listener.
 
-  //{  
-  // "source":"network",
-  // "level":"error",
-  // "text":"Failed to load resource: the server responded with a status of 404 (Not Found)",
-  // "timestamp":1553184257940.79,
-  // "url":"http://note.ly/favicon.ico",
-  // "networkRequestId":"1000029038.125"
-  //}}
+//{  
+//"source":"network",
+//"level":"error",
+//"text":"Failed to load resource: the server responded with a status of 404 ()",
+//"timestamp":1553288625400,
+//"url":"https://gauge.org/sdfsd",
+//"networkRequestId":"D56332F8080344A2696C18D0771EC383"
+//}
 
 ```
 
