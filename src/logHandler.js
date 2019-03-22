@@ -12,12 +12,12 @@ class LogHandler {
         Promise.all([_page.enable(), _network.enable(), _log.enable()]);
     }
 
-    async logEntry() {
+    logEntry() {
         logger('Enabled Log Listener')
-        await _log.entryAdded(({ entry }) => {
+        _log.entryAdded(({ entry }) => {
             logger(entry);
         });
-        await  _page.loadEventFired();
+        _page.loadEventFired();
     }
 }
 
