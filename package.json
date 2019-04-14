@@ -30,7 +30,7 @@
     "@babel/preset-env": "^7.3.4",
     "babel-jest": "^24.3.1",
     "jest": "^24.3.1",
-    "eslint": "^4.7.2",
+    "eslint": "^5.16.0",
     "eslint-plugin-import": "^2.8.0",
     "babel-eslint": "^10.0.1",
     "jest-junit": "^6.3.0",
