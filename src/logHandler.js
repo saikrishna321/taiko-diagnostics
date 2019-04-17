@@ -1,28 +1,25 @@
 import { logger } from './helpers';
 
-let _page;
-let _network;
-let _log;
-let _console;
+let _entryAdded;
+let _loadEventFired;
+let _messageAdded;
 class LogHandler {
 
-    constructor(page, network, log, console) {
-        _page = page;
-        _network = network;
-        _log = log;
-        _console = console;
-        Promise.all([_page.enable(), _network.enable(), _log.enable(), _console.enable()]);
+    constructor(entryAdded, loadEventFired, messageAdded) {
+        _entryAdded = entryAdded;
+        _loadEventFired = loadEventFired;
+        _messageAdded = messageAdded;
     }
 
     logEntry() {
         logger('Enabled Log Listener')
-        _log.entryAdded(({ entry }) => {
+        _entryAdded(({ entry }) => {
             logger(entry);
         });
-        _console.messageAdded((params) => {
+        _messageAdded((params) => {
             logger(params);
         })
-        _page.loadEventFired();
+        _loadEventFired();
     }
 }
 
