@@ -20,7 +20,7 @@ module.exports = {
       indent: [2, 4],
   
       'import/no-unresolved': [2, { commonjs: true, amd: true }],
-      'import/named': 2,
+      'import/named': 3,
       'import/namespace': 2,
       'import/default': 2,
       'import/export': 2,

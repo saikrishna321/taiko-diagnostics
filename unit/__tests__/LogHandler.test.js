@@ -19,6 +19,6 @@ test('Should invoke exceptionThrown callback with a listener function', async ()
 
 test('Should invoke logger with appropriate log message when listener passed to exceptionThrown is invoked', async () => {
     const exceptionThrownListner = exceptionThrown.mock.calls[0][0];
-    exceptionThrownListner({exceptionDetails: {exception: { description: "error message"} } });
+    exceptionThrownListner({ exceptionDetails: { exception: { description: 'error message' } } });
     expect(logger.mock.calls[2][0]).toBe('error message')
 });

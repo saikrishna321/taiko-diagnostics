@@ -22,7 +22,7 @@ class LogHandler {
         _messageAdded((params) => {
             logger(params);
         });
-        _exceptionThrown( ( { exceptionDetails}) => {
+        _exceptionThrown( ( { exceptionDetails }) => {
             logger(exceptionDetails.exception.description);
         });
         _loadEventFired();
