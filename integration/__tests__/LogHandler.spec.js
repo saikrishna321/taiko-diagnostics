@@ -22,6 +22,17 @@ test('Should print unhandled exception message into console', async () => {
     let expectedMessage = `Error: Test unhandled exception
     at throwsException (file://${fielPath}:4:19)
     at file://${fielPath}:6:9`
-
     expect(logger.mock.calls[1][0]).toBe(expectedMessage);
 });
+
+test('Should print error message into console', async () => {
+    await logConsoleInfo();
+    let fielPath = path.resolve('./integration/__tests__/data/log.html');
+    await goto(path.join('file://', fielPath));
+    const responseData = {
+        level: expect.any(String),
+        source: expect.any(String),
+        url: expect.any(String)
+    };
+    expect(logger.mock.calls[1][0]).toEqual(responseData);
+})

@@ -17,7 +17,7 @@ class LogHandler {
     logEntry() {
         logger('Enabled Log Listener')
         _entryAdded(({ entry }) => {
-            logger(entry);
+            logger({ level: entry.level, source: entry.source, url: entry.url });
         });
         _messageAdded((params) => {
             logger(params);
