@@ -22,3 +22,14 @@ test('Should invoke logger with appropriate log message when listener passed to 
     exceptionThrownListner({ exceptionDetails: { exception: { description: 'error message' } } });
     expect(logger.mock.calls[2][0]).toBe('error message')
 });
+
+test('Should invoke entryAdded callback with a listner function', async () => {
+    expect(entryAdded.mock.calls.length).toBe(1);
+    expect(typeof entryAdded.mock.calls[0][0]).toBe('function')
+})
+
+test('Should invoke logger with appropriate log message when listener passed to entryAdded is invoked', async () => {
+    const entryAdded = entryAdded.mock.calls[0][0];
+    entryAdded( { entry: { level: 'error', source: 'network', url: 'http://localhost:8080' } });
+    expect(logger.mock.calls[5][0]).toBe({ 'level': 'error', 'source': 'network', 'url': 'http://localhost:8080' })
+});
