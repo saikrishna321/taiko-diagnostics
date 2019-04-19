@@ -29,7 +29,7 @@ test('Should invoke entryAdded callback with a listner function', async () => {
 })
 
 test('Should invoke logger with appropriate log message when listener passed to entryAdded is invoked', async () => {
-    const entryAdded = entryAdded.mock.calls[0][0];
-    entryAdded( { entry: { level: 'error', source: 'network', url: 'http://localhost:8080' } });
+    const logEntry = entryAdded.mock.calls[0][0];
+    logEntry( { entry: { level: 'error', source: 'network', url: 'http://localhost:8080' } });
     expect(logger.mock.calls[5][0]).toBe({ 'level': 'error', 'source': 'network', 'url': 'http://localhost:8080' })
 });
