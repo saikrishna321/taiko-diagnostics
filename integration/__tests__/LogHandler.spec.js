@@ -22,7 +22,7 @@ test('Should print unhandled exception message into console', async () => {
     let expectedMessage = `Error: Test unhandled exception
     at throwsException (file://${fielPath}:4:19)
     at file://${fielPath}:6:9`
-    expect(logger.mock.calls[1][0]).toBe(expectedMessage);
+    expect(logger.mock.calls[0][0]).toBe(expectedMessage);
 });
 
 test('Should print error message into console', async () => {
