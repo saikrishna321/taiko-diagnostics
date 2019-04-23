@@ -37,9 +37,14 @@ test('Should print error message into console', async () => {
     expect(logger.mock.calls[1][0]).toEqual(responseData);
 })
 
-test('Should print console log', async () => {
+test('Should print console.log', async () => {
     await logConsoleInfo();
     let fielPath = path.resolve('./integration/__tests__/data/console.html');
     await goto(path.join('file://', fielPath));
-    expect(logger.mock.calls).toHaveLength(4)
+    const responseData = {
+        type: expect.any(String),
+        value: expect.any(String),
+        url: expect.any(String)
+    };
+    expect(logger.mock.calls[3][0]).toEqual(responseData);
 })

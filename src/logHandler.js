@@ -18,7 +18,9 @@ class LogHandler {
         });
 
         _runTime.consoleAPICalled((params) => {
-            logger(params);
+            const [{ value }] = params.args;
+            const [{ url }] = params.stackTrace.callFrames;
+            logger({ type: params.type, value, url });
         });
 
         _runTime.exceptionThrown( ( { exceptionDetails }) => {
