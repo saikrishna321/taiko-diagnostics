@@ -2,14 +2,13 @@ jest.mock('../../src/helpers');
 import { logger } from '../../src/helpers';
 import LogHandler from '../../src/logHandler';
 
-let entryAdded, loadEventFired, runTime, logHandler;
+let entryAdded, loadEventFired, runTime, logHandler, exceptionThrown, consoleAPICalled;
 beforeEach(() => {
     entryAdded = jest.fn();
     loadEventFired = jest.fn();
-    runTime = jest.fn(() => ({
-        Runtime: { exceptionThrown: jest.fn(), consoleAPICalled: jest.fn() }
-    }))
-    runTime = runTime().Runtime;
+    exceptionThrown = jest.fn();
+    consoleAPICalled = jest.fn();
+    runTime = { exceptionThrown: exceptionThrown, consoleAPICalled: consoleAPICalled };
     logHandler = new LogHandler(entryAdded, loadEventFired, runTime);
     logHandler.logEntry();
 });
