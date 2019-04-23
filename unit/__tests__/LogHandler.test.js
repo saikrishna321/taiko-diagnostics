@@ -2,25 +2,32 @@ jest.mock('../../src/helpers');
 import { logger } from '../../src/helpers';
 import LogHandler from '../../src/logHandler';
 
-let entryAdded, loadEventFired, messageAdded, exceptionThrown, logHandler;
+let entryAdded, loadEventFired, runTime, logHandler;
 beforeEach(() => {
     entryAdded = jest.fn();
     loadEventFired = jest.fn();
-    messageAdded = jest.fn();
-    exceptionThrown = jest.fn();
-    logHandler = new LogHandler(entryAdded, loadEventFired, messageAdded, exceptionThrown);
+    runTime = jest.fn(() => ({
+        Runtime: { exceptionThrown: jest.fn(), consoleAPICalled: jest.fn() }
+    }))
+    runTime = runTime().Runtime;
+    logHandler = new LogHandler(entryAdded, loadEventFired, runTime);
     logHandler.logEntry();
 });
 
 test('Should invoke exceptionThrown callback with a listener function', async () => {
-    expect(exceptionThrown.mock.calls.length).toBe(1)
-    expect(typeof exceptionThrown.mock.calls[0][0]).toBe('function')
+    expect(runTime.exceptionThrown.mock.calls.length).toBe(1)
+    expect(typeof runTime.exceptionThrown.mock.calls[0][0]).toBe('function')
 });
 
 test('Should invoke logger with appropriate log message when listener passed to exceptionThrown is invoked', async () => {
-    const exceptionThrownListner = await exceptionThrown.mock.calls[0][0];
+    const exceptionThrownListner = await runTime.exceptionThrown.mock.calls[0][0];
     exceptionThrownListner({ exceptionDetails: { exception: { description: 'error message' } } });
     expect(logger.mock.calls[0][0]).toBe('error message')
+});
+
+test('Should invoke consoleAPI callback with a listener function', async () => {
+    expect(runTime.consoleAPICalled.mock.calls.length).toBe(1)
+    expect(typeof runTime.consoleAPICalled.mock.calls[0][0]).toBe('function')
 });
 
 test('Should invoke entryAdded callback with a listner function', async () => {
