@@ -2,26 +2,28 @@ import { logger } from './helpers';
 
 let _entryAdded;
 let _loadEventFired;
-let _messageAdded;
-let _exceptionThrown;
+let _runTime;
 
 class LogHandler {
 
-    constructor(entryAdded, loadEventFired, messageAdded, exceptionThrown) {
+    constructor(entryAdded, loadEventFired, runTime) {
         _entryAdded = entryAdded;
         _loadEventFired = loadEventFired;
-        _messageAdded = messageAdded;
-        _exceptionThrown = exceptionThrown;
+        _runTime = runTime;
     }
 
     logEntry() {
         _entryAdded(({ entry }) => {
             logger({ level: entry.level, source: entry.source, url: entry.url });
         });
-        _messageAdded((params) => {
-            logger(params);
+
+        _runTime.consoleAPICalled((params) => {
+            const [{ value }] = params.args;
+            const [{ url }] = params.stackTrace.callFrames;
+            logger({ type: params.type, value, url });
         });
-        _exceptionThrown( ( { exceptionDetails }) => {
+
+        _runTime.exceptionThrown( ( { exceptionDetails }) => {
             logger(exceptionDetails.exception.description);
         });
         _loadEventFired();

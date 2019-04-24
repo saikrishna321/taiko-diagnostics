@@ -14,11 +14,10 @@ export function clientHandler(taiko) {
     const page = taiko.client().Page;
     const network = taiko.client().Network;
     const log = taiko.client().Log;
-    const _console = taiko.client().Console;
     const runtime = taiko.client().Runtime
-    Promise.all([page.enable(), network.enable(), log.enable(), _console.enable()]);
+    Promise.all([page.enable(), network.enable(), log.enable(), runtime.enable()]);
     logHandler = new LogHandler(log.entryAdded, page.loadEventFired,
-        _console.messageAdded, runtime.exceptionThrown);
+        runtime);
 }
 
 export async function startTracing() {
