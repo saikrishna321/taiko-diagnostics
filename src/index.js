@@ -15,7 +15,7 @@ export function clientHandler(taiko) {
     const network = taiko.client().Network;
     const log = taiko.client().Log;
     const runtime = taiko.client().Runtime
-    Promise.all([page.enable(), network.enable(), log.enable()]);
+    Promise.all([page.enable(), network.enable(), log.enable(), runtime.enable()]);
     logHandler = new LogHandler(log.entryAdded, page.loadEventFired,
         runtime);
 }
