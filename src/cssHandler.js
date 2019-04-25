@@ -1,5 +1,5 @@
 import { assert } from './helpers';
-var log = require('npmlog');
+import log from 'npmlog'
 
 const stylesheets = [];
 let css;
