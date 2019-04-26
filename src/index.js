@@ -9,12 +9,13 @@ let logHandler;
 export const ID  = 'diagnostics'
 
 export function clientHandler(taiko) {
-    tracingHandler = new TracingHandler(taiko.client().Tracing, taiko.client().IO);
-    cssHandler = new CSSHandler(taiko.client().CSS);
     const page = taiko.client().Page;
     const network = taiko.client().Network;
     const log = taiko.client().Log;
-    const runtime = taiko.client().Runtime
+    const runtime = taiko.client().Runtime;
+    const css = taiko.client().CSS;
+    tracingHandler = new TracingHandler(taiko.client().Tracing, taiko.client().IO);
+    cssHandler = new CSSHandler(css, runtime);
     Promise.all([page.enable(), network.enable(), log.enable(), runtime.enable()]);
     logHandler = new LogHandler(log.entryAdded, page.loadEventFired,
         runtime);
