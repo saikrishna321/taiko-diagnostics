@@ -98,9 +98,14 @@ console.log(getPerformanceMetrics())
 ```js
 startCssTracing();
 goto('https://unused-css-example-site-qijunirqpu.now.sh');
-stopCssTracing();
-const cssCoverage = await getCssCoverage();
-// { unUsedCss: 55 } in percentage
+const cssCoverage = await stopCssTracing();
+//{ url: 'https://github.githubassets.com/assets/site-b8765b24c47173d7a51cc2c356088061.css',
+//  type: 'CSS',
+//  totalBytes: 56541,
+//  usedBytesTotal: 327,
+//  unusedBytesTotal: 56214,
+//  usedPercentage: 0.5783413805910698,
+//  unusedPercentage: 99.42165861940893 }
 ```
 
 ![Coverage tab](https://raw.githubusercontent.com/saikrishna321/taiko-diagnostics/master/images/css.png)

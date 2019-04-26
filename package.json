@@ -12,7 +12,8 @@
     "build": "babel src -d lib",
     "prepublish": "babel src -d lib",
     "eslint": "eslint '**/*.js' --ext '**/*.jsx'",
-    "eslint-fix": "eslint --fix '**/*.js' --ext '**/*.jsx'"
+    "eslint-fix": "eslint --fix '**/*.js' --ext '**/*.jsx'",
+    "prettier": "prettier '**/*.js' --write --single-quote '!lib/**/*.js'"
   },
   "jest": {
     "verbose": true
@@ -32,10 +33,20 @@
     "babel-jest": "^24.3.1",
     "eslint": "^5.16.0",
     "eslint-plugin-import": "^2.8.0",
-    "husky": "^2.0.0",
+    "husky": "^2.1.0",
     "jest": "^24.3.1",
     "jest-junit": "^6.3.0",
-    "taiko": "git://github.com/getgauge/taiko.git"
+    "prettier": "1.17.0",
+    "taiko": "git://github.com/getgauge/taiko.git",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "pretty-quick": "^1.10.0"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write --single-quote",
+      "git add"
+    ]
   },
   "dependencies": {
     "npmlog": "^4.1.2",
@@ -43,7 +54,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run eslint-fix && npm run eslint",
+      "pre-commit": "lint-staged",
       "pre-push": "npm run test"
     }
   }
