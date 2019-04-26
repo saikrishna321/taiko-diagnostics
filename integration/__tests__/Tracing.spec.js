@@ -7,7 +7,6 @@ import {
   stopCssTracing,
   endTracing,
   getSpeedIndex,
-  getCssCoverage,
   getPerformanceMetrics
 } from '../../src/index';
 loadPlugin(ID, clientHandler);
@@ -38,7 +37,7 @@ test('Should return performance metric', async () => {
   expect(performance.firstPaint).toBeLessThan(5 * 1000);
 });
 
-test.only('Should return unused coverage', async () => {
+test('Should return unused coverage', async () => {
   await startCssTracing();
   await goto('http://github.com/macku/page-coverage');
   const cssCoverage = await stopCssTracing();

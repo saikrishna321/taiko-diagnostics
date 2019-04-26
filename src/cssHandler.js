@@ -1,9 +1,5 @@
 // eslint-disable-next-line import/named
 import { assert, formatCoverage } from './helpers';
-import log from 'npmlog';
-
-const stylesheets = [];
-let cssRuleUsage;
 
 class CSSCoverage {
   constructor(css, runtime) {
@@ -86,10 +82,9 @@ class CSSCoverage {
     assert(this._enabled, 'CSS Coverage has not started!!');
     let cssResults = await this.css.stopRuleUsageTracking();
     await Promise.all([this.css.disable()]);
-    cssRuleUsage = await cssResults;
     this._enabled = false;
     const styleSheetIdToCoverage = new Map();
-    for (const entry of cssRuleUsage.ruleUsage) {
+    for (const entry of cssResults.ruleUsage) {
       let ranges = styleSheetIdToCoverage.get(entry.styleSheetId);
       if (!ranges) {
         ranges = [];
