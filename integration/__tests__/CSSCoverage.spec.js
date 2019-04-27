@@ -23,8 +23,7 @@ test('Should report css coverage', async () => {
   await goto(path.join('file://', fielPath));
   const coverage = await stopCssTracing();
   const responseData = {
-    url:
-      'file:///Users/saikrisv/git/taiko-diagnostics/integration/__tests__/data/simple.html',
+    url: expect.any(String),
     type: 'CSS',
     totalBytes: 42,
     usedBytesTotal: 20,
