@@ -113,8 +113,11 @@ class CSSCoverage {
       }))
     ];
     const result = await formatCoverage(coverageAfter);
-    await formatCoverageAsTable(result);
     return result;
+  }
+
+  async prettyCss(coverage) {
+    await formatCoverageAsTable(coverage);
   }
 }
 
