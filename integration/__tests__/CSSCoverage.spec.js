@@ -36,7 +36,7 @@ test('Should report css coverage', async () => {
   expect(coverage.length).toBe(1);
 });
 
-test.only('Should report multiple css coberage', async () => {
+test('Should report multiple css coberage', async () => {
   let fielPath = path.resolve('./integration/__tests__/data/multiple.html');
   await startCssTracing();
   await goto(path.join('file://', fielPath));
