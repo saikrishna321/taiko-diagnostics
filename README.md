@@ -1,6 +1,6 @@
 [![Build Status](https://dev.azure.com/saikrishna321/taiko-diagnostics/_apis/build/status/saikrishna321.taiko-diagnostics?branchName=master)](https://dev.azure.com/saikrishna321/taiko-diagnostics/_build/latest?definitionId=4&branchName=master) [![npm version](https://badge.fury.io/js/taiko-diagnostics.svg)](https://badge.fury.io/js/taiko-diagnostics)[![Greenkeeper badge](https://badges.greenkeeper.io/saikrishna321/taiko-diagnostics.svg)](https://greenkeeper.io/)
 
-[![NPM](https://nodei.co/npm/taiko-diagnostics.png)](https://nodei.co/npm/taiko-diagnostics/) 
+[![NPM](https://nodei.co/npm/taiko-diagnostics.png)](https://nodei.co/npm/taiko-diagnostics/)
 
 # taiko-diagnostics
 
@@ -51,9 +51,8 @@ startTracing();
 
 Stop tracing the browser.
 
-
 ```js
-endTracing()
+endTracing();
 ```
 
 ### `getTracingLogs` Command
@@ -111,13 +110,13 @@ console.log(getPerformanceMetrics());
 startCssTracing();
 goto('https://unused-css-example-site-qijunirqpu.now.sh');
 const cssCoverage = await stopCssTracing();
-//{ url: 'https://github.githubassets.com/assets/site-b8765b24c47173d7a51cc2c356088061.css',
-//  type: 'CSS',
-//  totalBytes: 56541,
-//  usedBytesTotal: 327,
-//  unusedBytesTotal: 56214,
-//  usedPercentage: 0.5783413805910698,
-//  unusedPercentage: 99.42165861940893 }
+//[ { url: 'https://unused-css-example-site-qijunirqpu.now.sh/main.css',
+//        type: 'CSS',
+//        totalBytes: 1453,
+//        usedBytesTotal: 653,
+//        unusedBytesTotal: 800,
+//       usedPercentage: 44.941500344115624,
+//        unusedPercentage: 55.058499655884376 } ]
 ```
 
 ![Coverage tab](https://raw.githubusercontent.com/saikrishna321/taiko-diagnostics/master/images/css.png)
@@ -127,6 +126,8 @@ const cssCoverage = await stopCssTracing();
 ```
 await prettyCSS(coverage);
 ```
+
+![CSS Table](https://raw.githubusercontent.com/saikrishna321/taiko-diagnostics/master/images/cssTable.png)
 
 ### `logConsoleInfo` command
 
