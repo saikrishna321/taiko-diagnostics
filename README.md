@@ -8,28 +8,34 @@ A plugin for taiko which provides some diagnostics features like measuring speed
 
 ## Installation
 
-* `npm install taiko-diagnostics --save`
+- `npm install taiko-diagnostics --save`
 
 ## Usage
 
 ```javascript
 const { openBrowser, loadPlugin, goto, closeBrowser } = require('taiko');
-const {ID, clientHandler, startTracing, endTracing, getSpeedIndex } = require('taiko-diagnostics');
+const {
+  ID,
+  clientHandler,
+  startTracing,
+  endTracing,
+  getSpeedIndex
+} = require('taiko-diagnostics');
 loadPlugin(ID, clientHandler);
 
 (async () => {
-    try {
-        await openBrowser();
-        await startTracing();
-        await goto('https://github.com/');
-        await endTracing();
-        let si = await getSpeedIndex();
-        console.log(si);
-    } catch (e) {
-        console.error(e);
-    } finally {
-        await closeBrowser();
-    }
+  try {
+    await openBrowser();
+    await startTracing();
+    await goto('https://github.com/');
+    await endTracing();
+    let si = await getSpeedIndex();
+    console.log(si);
+  } catch (e) {
+    console.error(e);
+  } finally {
+    await closeBrowser();
+  }
 })();
 ```
 
@@ -38,14 +44,15 @@ loadPlugin(ID, clientHandler);
 Start tracing the browser.
 
 ```js
-startTracing()
+startTracing();
 ```
 
 ### `endTracing` Command
 
 Stop tracing the browser.
 
-```javascript
+
+```js
 endTracing()
 ```
 
@@ -54,11 +61,14 @@ endTracing()
 Returns the tracelogs that was captured within the tracing period. You can use this command to store the trace logs on the file system to analyse the trace via Chrome DevTools interface.
 
 ```js
-startTracing()
+startTracing();
 goto('https://github.com/');
-endTracing()
+endTracing();
 
-fs.writeFileSync('/path/to/tracelog.json', JSON.stringify(await getTracingLogs()))
+fs.writeFileSync(
+  '/path/to/tracelog.json',
+  JSON.stringify(await getTracingLogs())
+);
 ```
 
 ### `getSpeedIndex` Command
@@ -66,11 +76,11 @@ fs.writeFileSync('/path/to/tracelog.json', JSON.stringify(await getTracingLogs()
 Returns the [Speed Index](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) and [Perceptual Speed Index](https://developers.google.com/web/tools/lighthouse/audits/speed-index) from the page load that happened between the tracing period.
 
 ```js
-startTracing()
+startTracing();
 goto('https://github.com/');
-endTracing()
+endTracing();
 
-console.log(getSpeedIndex())
+console.log(getSpeedIndex());
 // outputs
 // { speedIndex: 789.6634800064564,
 //   perceptualSpeedIndex: 876.0901860232523 }
@@ -79,11 +89,11 @@ console.log(getSpeedIndex())
 ### `getPerformanceMetrics` Command
 
 ```js
-startTracing()
+startTracing();
 goto('https://github.com/');
-endTracing()
+endTracing();
 
-console.log(getPerformanceMetrics())
+console.log(getPerformanceMetrics());
 // outputs
 //{
 //    firstPaint: 735.666,
@@ -112,14 +122,20 @@ const cssCoverage = await stopCssTracing();
 
 ![Coverage tab](https://raw.githubusercontent.com/saikrishna321/taiko-diagnostics/master/images/css.png)
 
+### Pretty print cssCoverage in table
+
+```
+await prettyCSS(coverage);
+```
 
 ### `logConsoleInfo` command
+
 ```js
-logConsoleInfo(); 
+logConsoleInfo();
 await goto('gauge.org/sdfsd');
 Make sure not to add `await` as logConsoleInfo enables log Listener.
 
-//{  
+//{
 //"source":"network",
 //"level":"error",
 //"text":"Failed to load resource: the server responded with a status of 404 ()",
@@ -135,9 +151,7 @@ Make sure not to add `await` as logConsoleInfo enables log Listener.
 To launch the REPL type `taiko --plugin taiko-diagnostics` in your favorite terminal application. This will launch the Taiko Prompt.
 
 e.g
-`Version: 0.7.0 (Chromium:74.0.3723.0)
-Type .api for help and .exit to quit`
-
+`Version: 0.7.0 (Chromium:74.0.3723.0) Type .api for help and .exit to quit`
 
 You should now have full access to all of the diagnostics in the taiko REPL window
 
@@ -163,6 +177,6 @@ info Detected renderer thread by 'TracingStartedInBrowser' event: pid 69317, tid
   domContentLoaded: 1073.878,
   timeToFirstInteractive: 1194.132,
   load: 1208.64 }
-  ```
+```
 
 Note that `startTracing`,`endTracing`, and `getSpeedIndex` apis are not from `taiko`. These are given by the plugin.

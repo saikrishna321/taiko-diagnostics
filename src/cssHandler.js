@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/named
-import { assert, formatCoverage } from './helpers';
+import { assert, formatCoverage, formatCoverageAsTable } from './helpers';
 
 class CSSCoverage {
   constructor(css, runtime) {
@@ -114,6 +114,10 @@ class CSSCoverage {
     ];
     const result = await formatCoverage(coverageAfter);
     return result;
+  }
+
+  async prettyCss(coverage) {
+    await formatCoverageAsTable(coverage);
   }
 }
 

@@ -65,3 +65,7 @@ export async function getCssCoverage() {
 export function logConsoleInfo() {
   return logHandler.logEntry();
 }
+
+export async function prettyCSS(coverage) {
+  await cssHandler.prettyCss(coverage);
+}

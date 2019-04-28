@@ -3,7 +3,8 @@ import {
   ID,
   clientHandler,
   startCssTracing,
-  stopCssTracing
+  stopCssTracing,
+  prettyCSS
 } from '../../src/index';
 import path from 'path';
 loadPlugin(ID, clientHandler);
@@ -40,5 +41,6 @@ test('Should report multiple css coberage', async () => {
   await startCssTracing();
   await goto(path.join('file://', fielPath));
   const coverage = await stopCssTracing();
+  await prettyCSS(coverage);
   expect(coverage.length).toBe(3);
 });

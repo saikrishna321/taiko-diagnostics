@@ -1,4 +1,9 @@
 import log from 'npmlog';
+import Table from 'cli-table';
+import chalk from 'chalk';
+import prettyBytes from 'pretty-bytes';
+import progressBar from './progressBar';
+import truncateUrl from 'truncate-url';
 
 function assert(value, message) {
   if (!value) throw new Error(message);
@@ -38,4 +43,30 @@ async function formatCoverage(coverage) {
   return cssCoverageDetails;
 }
 
-module.exports = { assert, logger, formatCoverage };
+async function formatCoverageAsTable(coverage) {
+  const table = new Table({
+    head: ['Url', 'Type', 'TotalBytes', 'UsedBytesTotal', 'UsedPercentage'].map(
+      header => chalk.magenta.bold(header)
+    ),
+    colAligns: ['left', 'left', 'left', 'left', 'left', 'left', 'left']
+  });
+
+  coverage.forEach(
+    ({ url, type, totalBytes, usedBytesTotal, usedPercentage }) => {
+      const totalBytesFormatted = chalk.green.bold(prettyBytes(totalBytes));
+      const usedBytesFormatted = `${chalk.green.bold(
+        prettyBytes(usedBytesTotal)
+      )} ${chalk.dim(`(${usedPercentage.toFixed(2)}%)`)}`;
+      table.push([
+        truncateUrl(url, 50),
+        type,
+        totalBytesFormatted,
+        usedBytesFormatted,
+        progressBar(usedPercentage)
+      ]);
+    }
+  );
+  console.log(table.toString());
+}
+
+module.exports = { assert, logger, formatCoverage, formatCoverageAsTable };
