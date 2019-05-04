@@ -1,4 +1,5 @@
 [![Build Status](https://dev.azure.com/saikrishna321/taiko-diagnostics/_apis/build/status/saikrishna321.taiko-diagnostics?branchName=master)](https://dev.azure.com/saikrishna321/taiko-diagnostics/_build/latest?definitionId=4&branchName=master) [![npm version](https://badge.fury.io/js/taiko-diagnostics.svg)](https://badge.fury.io/js/taiko-diagnostics)[![Greenkeeper badge](https://badges.greenkeeper.io/saikrishna321/taiko-diagnostics.svg)](https://greenkeeper.io/)
+[![CodeFactor](https://www.codefactor.io/repository/github/saikrishna321/taiko-diagnostics/badge)](https://www.codefactor.io/repository/github/saikrishna321/taiko-diagnostics)
 
 [![NPM](https://nodei.co/npm/taiko-diagnostics.png)](https://nodei.co/npm/taiko-diagnostics/)
 
