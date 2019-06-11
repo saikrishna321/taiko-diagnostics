@@ -5,19 +5,15 @@ import LogHandler from './logHandler';
 let tracingHandler;
 let cssHandler;
 let logHandler;
+let _taiko, _eventHandler, _descEventHandler;
 
-export const ID = 'diagnostics';
-
-export function clientHandler(taiko) {
-  const page = taiko.client().Page;
-  const network = taiko.client().Network;
-  const log = taiko.client().Log;
-  const runtime = taiko.client().Runtime;
-  const css = taiko.client().CSS;
-  tracingHandler = new TracingHandler(
-    taiko.client().Tracing,
-    taiko.client().IO
-  );
+export function clientHandler(client) {
+  const page = client.Page;
+  const network = client.Network;
+  const log = client.Log;
+  const runtime = client.Runtime;
+  const css = client.CSS;
+  tracingHandler = new TracingHandler(client.Tracing, client.IO);
   cssHandler = new CSSHandler(css, runtime);
   Promise.all([
     page.enable(),
@@ -28,14 +24,21 @@ export function clientHandler(taiko) {
   logHandler = new LogHandler(log.entryAdded, page.loadEventFired, runtime);
 }
 
+export function init(taiko, eventHandler, descEventHandler) {
+  _taiko = taiko;
+  _eventHandler = eventHandler;
+  _descEventHandler = descEventHandler;
+  _eventHandler.on('createdSession', clientHandler);
+}
+
 export async function startTracing() {
   await tracingHandler.startTracing();
-  return { description: 'Browser tracing started' };
+  _descEventHandler.emit('success', 'Browser tracing started');
 }
 
 export async function endTracing() {
   await tracingHandler.endTracing();
-  return { description: 'Browser tracing ended' };
+  _descEventHandler.emit('success', 'Browser tracing ended');
 }
 
 export async function getSpeedIndex() {

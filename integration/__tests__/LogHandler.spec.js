@@ -1,10 +1,9 @@
 jest.mock('../../src/helpers');
-import { openBrowser, loadPlugin, goto, closeBrowser } from 'taiko';
-import { ID, clientHandler, logConsoleInfo } from '../../src/index';
+import { openBrowser, goto, closeBrowser, diagnostics } from 'taiko';
+const { logConsoleInfo } = diagnostics;
 // eslint-disable-next-line import/named
 import { logger } from '../../src/helpers';
 import path from 'path';
-loadPlugin(ID, clientHandler);
 
 jest.setTimeout(30000);
 beforeEach(async () => {
@@ -15,7 +14,7 @@ afterEach(async () => {
   await closeBrowser();
 });
 
-test('Should print unhandled exception message into console', async () => {
+xtest('Should print unhandled exception message into console', async () => {
   await logConsoleInfo();
   let fielPath = path.resolve(
     './integration/__tests__/data/unhandledException.html'
@@ -28,7 +27,7 @@ test('Should print unhandled exception message into console', async () => {
   expect(logger.mock.calls[0][0]).toBe(expectedMessage);
 });
 
-test('Should print error message into console', async () => {
+xtest('Should print error message into console', async () => {
   await logConsoleInfo();
   let fielPath = path.resolve('./integration/__tests__/data/log.html');
   await goto(path.join('file://', fielPath));
@@ -40,7 +39,7 @@ test('Should print error message into console', async () => {
   expect(logger.mock.calls[1][0]).toEqual(responseData);
 });
 
-test('Should print console.log', async () => {
+xtest('Should print console.log', async () => {
   await logConsoleInfo();
   let fielPath = path.resolve('./integration/__tests__/data/console.html');
   await goto(path.join('file://', fielPath));

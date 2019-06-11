@@ -1,13 +1,6 @@
-import { openBrowser, loadPlugin, goto, closeBrowser } from 'taiko';
-import {
-  ID,
-  clientHandler,
-  startCssTracing,
-  stopCssTracing,
-  prettyCSS
-} from '../../src/index';
+import { openBrowser, goto, closeBrowser, diagnostics } from 'taiko';
+const { startCssTracing, stopCssTracing, prettyCSS } = diagnostics;
 import path from 'path';
-loadPlugin(ID, clientHandler);
 
 jest.setTimeout(30000);
 beforeEach(async () => {
