@@ -38,7 +38,7 @@
     "jest-junit": "^6.3.0",
     "prettier": "1.18.2",
     "taiko": "git://github.com/getgauge/taiko.git",
-    "eslint-config-prettier": "^4.2.0",
+    "eslint-config-prettier": "^5.0.0",
     "eslint-plugin-prettier": "^3.0.1",
     "pretty-quick": "^1.10.0",
     "lint-staged": "^8.1.4"
