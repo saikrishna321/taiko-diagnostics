@@ -1,6 +1,6 @@
 <h1 align="center">
 	<br>
-	<img src="images/TaikoDiagnostics.png" alt="TaikoDiagnostics">
+	<img src="https://raw.githubusercontent.com/saikrishna321/taiko-diagnostics/master/images/TaikoDiagnostics.png" alt="TaikoDiagnostics">
 	<br>
 	<br>
 	<br>
