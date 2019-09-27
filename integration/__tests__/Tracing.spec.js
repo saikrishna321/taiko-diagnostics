@@ -28,7 +28,7 @@ test('Should return speedindex and perceptualSpeedIndex', async () => {
 
 test('Should return performance metric', async () => {
   await startTracing();
-  await goto('https://jasper-bison.glitch.me/');
+  await goto('https://google.com');
   await endTracing();
   const performance = await getPerformanceMetrics();
   expect(performance.firstPaint).toBeLessThan(5 * 1000);
@@ -40,4 +40,12 @@ test('Should return unused coverage', async () => {
   const cssCoverage = await stopCssTracing();
   expect(cssCoverage[0].type).toBe('CSS');
   expect(cssCoverage.length).toBeGreaterThan(1);
+});
+
+test('should measure page load time for second instance', async () => {
+  await startTracing();
+  await goto(`www.bing.com`);
+  await endTracing();
+  const performanceMetrics = await getPerformanceMetrics();
+  expect(performanceMetrics.firstPaint).toBeLessThan(5 * 1000);
 });
