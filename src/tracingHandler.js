@@ -16,7 +16,7 @@ class TracingHandler {
       throw new Error('Browser is already being traced');
     }
     this.isTracing = true;
-    this._tracing.start({
+    return this._tracing.start({
       categories: categories.join(','),
       transferMode: 'ReturnAsStream'
     });
@@ -35,11 +35,11 @@ class TracingHandler {
     await this._tracing.tracingComplete(async event => {
       await this._readIOStream(event.stream).then(fulfill);
     });
-    return await this.traceEvents;
+    return this.traceEvents;
   }
 
-  async getTracingLogs() {
-    return await this.traceEvents;
+  getTracingLogs() {
+    return this.traceEvents;
   }
 
   async getSpeedIndex() {
