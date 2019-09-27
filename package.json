@@ -35,7 +35,7 @@
     "eslint-plugin-import": "^2.8.0",
     "husky": "^3.0.0",
     "jest": "^24.3.1",
-    "jest-junit": "^6.3.0",
+    "jest-junit": "^8.0.0",
     "prettier": "1.18.2",
     "taiko": "^1.0.0",
     "eslint-config-prettier": "^6.0.0",
