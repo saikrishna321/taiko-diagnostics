@@ -53,7 +53,7 @@ test('Should return speedindex and perceptualSpeedIndex', async () => {
 
 ### `startTracing()` Command
 
-Start tracing the browser.
+Start tracing the browser. Tracing could be started only once per browser.
 
 ```js
 startTracing();
