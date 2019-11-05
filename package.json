@@ -40,7 +40,7 @@
     "taiko": "^1.0.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "pretty-quick": "^1.10.0",
+    "pretty-quick": "^2.0.1",
     "lint-staged": "^9.0.0"
   },
   "lint-staged": {
