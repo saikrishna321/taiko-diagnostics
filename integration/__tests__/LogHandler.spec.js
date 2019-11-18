@@ -14,33 +14,44 @@ afterEach(async () => {
   await closeBrowser();
 });
 
-xtest('Should print unhandled exception message into console', async () => {
-  await logConsoleInfo();
+test('Should print unhandled exception message into console', async () => {
   let fielPath = path.resolve(
     './integration/__tests__/data/unhandledException.html'
   );
-  await goto(path.join('file://', fielPath));
+  const error = [];
+  let emitter = await logConsoleInfo();
+  emitter.on('pageError', e => {
+    error.push(e);
+  });
 
+  await goto(path.join('file://', fielPath));
   let expectedMessage = `Error: Test unhandled exception
     at throwsException (file://${fielPath}:4:19)
     at file://${fielPath}:6:9`;
-  expect(logger.mock.calls[0][0]).toBe(expectedMessage);
+  expect(error[0].exception.description).toEqual(expectedMessage);
 });
 
-xtest('Should print error message into console', async () => {
-  await logConsoleInfo();
-  let fielPath = path.resolve('./integration/__tests__/data/log.html');
-  await goto(path.join('file://', fielPath));
+test('Should print error message into console', async () => {
+  const logEntry = [];
+  const emitter = await logConsoleInfo();
+  emitter.on('logEntry', log => {
+    logEntry.push(log);
+  });
+  await goto('https://www.reddit.com/');
   const responseData = {
     level: expect.any(String),
     source: expect.any(String),
     url: expect.any(String)
   };
-  expect(logger.mock.calls[1][0]).toEqual(responseData);
+  expect(logEntry[0]).toEqual(responseData);
 });
 
-xtest('Should print console.log', async () => {
-  await logConsoleInfo();
+test('Should print console.log', async () => {
+  const console = [];
+  const emitter = await logConsoleInfo();
+  emitter.on('consoleLog', log => {
+    console.push(log);
+  });
   let fielPath = path.resolve('./integration/__tests__/data/console.html');
   await goto(path.join('file://', fielPath));
   const responseData = {
@@ -48,5 +59,5 @@ xtest('Should print console.log', async () => {
     value: expect.any(String),
     url: expect.any(String)
   };
-  expect(logger.mock.calls[3][0]).toEqual(responseData);
+  expect(console[0]).toEqual(responseData);
 });

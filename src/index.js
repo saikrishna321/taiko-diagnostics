@@ -1,6 +1,7 @@
 import TracingHandler from './tracingHandler';
 import CSSHandler from './cssHandler';
 import LogHandler from './logHandler';
+import TaikoDiagEmitter from './TaikoDiagEmitter';
 
 let tracingHandler;
 let cssHandler;
@@ -65,8 +66,10 @@ export async function getCssCoverage() {
   return await cssHandler.getCssCoverage();
 }
 
-export function logConsoleInfo() {
-  return logHandler.logEntry();
+export async function logConsoleInfo() {
+  const emitter = new TaikoDiagEmitter();
+  await logHandler.logEntry(emitter);
+  return emitter;
 }
 
 export async function prettyCSS(coverage) {
