@@ -144,7 +144,12 @@ await prettyCSS(coverage);
 ### `logConsoleInfo` command
 
 ```js
-logConsoleInfo();
+const error = [];
+  let emitter = await logConsoleInfo();
+  emitter.on('pageError', e => { // Other emitters - logEntry, consoleLog
+    error.push(e);
+  });
+
 await goto('gauge.org/sdfsd');
 Make sure not to add `await` as logConsoleInfo enables log Listener.
 

@@ -1,6 +1,6 @@
 {
   "name": "taiko-diagnostics",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "A plugin for taiko which provides some diagnostics features",
   "main": "lib/index.js",
   "files": [
