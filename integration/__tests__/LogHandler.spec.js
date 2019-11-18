@@ -20,7 +20,7 @@ test('Should print unhandled exception message into console', async () => {
   );
   const error = [];
   let emitter = await logConsoleInfo();
-  emitter.on('throwError', e => {
+  emitter.on('pageError', e => {
     error.push(e);
   });
 

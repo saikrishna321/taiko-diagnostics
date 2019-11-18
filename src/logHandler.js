@@ -23,7 +23,7 @@ class LogHandler {
     });
 
     this._runTime.exceptionThrown(({ exceptionDetails }) => {
-      emitter.emitObject('throwError', exceptionDetails);
+      emitter.emitObject('pageError', exceptionDetails);
     });
     this._loadEventFired();
   }
