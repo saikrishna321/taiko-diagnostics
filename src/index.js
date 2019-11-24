@@ -2,13 +2,25 @@ import TracingHandler from './tracingHandler';
 import CSSHandler from './cssHandler';
 import LogHandler from './logHandler';
 import TaikoDiagEmitter from './TaikoDiagEmitter';
+import lighthouse from 'lighthouse';
+const ReportGenerator = require('lighthouse/lighthouse-core/report/report-generator');
+import fs from 'fs';
 
 let tracingHandler;
 let cssHandler;
 let logHandler;
 let _taiko, _eventHandler, _descEventHandler;
+let host;
+let port;
+let reportLH = [];
 
 export function clientHandler(client) {
+  const wsDedebug = client.webSocketUrl
+    .split('/devtools/')[0]
+    .replace('ws://', '')
+    .split(':');
+  host = wsDedebug[0];
+  port = wsDedebug[1];
   const page = client.Page;
   const network = client.Network;
   const log = client.Log;
@@ -74,4 +86,16 @@ export async function logConsoleInfo() {
 
 export async function prettyCSS(coverage) {
   await cssHandler.prettyCss(coverage);
+}
+
+export async function getLh() {
+  const lhData = await lighthouse('https://google.com', {
+    port,
+    hostname: host
+  });
+  console.log(lhData);
+}
+
+export async function getLHResults() {
+  await Promise.all(reportLH.map(b => console.log('----', b)));
 }

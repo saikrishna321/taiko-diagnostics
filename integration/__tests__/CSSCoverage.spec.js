@@ -1,14 +1,23 @@
 import { openBrowser, goto, closeBrowser, diagnostics } from 'taiko';
-const { startCssTracing, stopCssTracing, prettyCSS } = diagnostics;
+const {
+  startCssTracing,
+  stopCssTracing,
+  prettyCSS,
+  getLh,
+  getLHResults
+} = diagnostics;
 import path from 'path';
+const lighthouse = require('lighthouse');
+const chromeLauncher = require('chrome-launcher');
 
-jest.setTimeout(30000);
+jest.setTimeout(100000);
 beforeEach(async () => {
   await openBrowser();
 });
 
 afterEach(async () => {
   await closeBrowser();
+  //await getLHResults();
 });
 
 test('Should report css coverage', async () => {
@@ -36,4 +45,8 @@ test('Should report multiple css coberage', async () => {
   const coverage = await stopCssTracing();
   await prettyCSS(coverage);
   expect(coverage.length).toBe(3);
+});
+
+test.only('hello', async () => {
+  await getLh();
 });

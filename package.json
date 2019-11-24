@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "test": "jest unit/__tests__/*.*.js --ci --reporters=default --reporters=jest-junit",
-    "integration": "npm run build && npm install -g . && TAIKO_PLUGIN='taiko-diagnostics' JEST_JUNIT_OUTPUT='./int-junit.xml' jest integration/__tests__/**.spec.js --ci --reporters=default --reporters=jest-junit",
+    "integration": "npm run build && npm install -g . && TAIKO_PLUGIN='taiko-diagnostics' JEST_JUNIT_OUTPUT='./int-junit.xml' jest integration/__tests__/CSSCoverage.spec.js --ci --reporters=default --reporters=jest-junit",
     "build": "babel src -d lib",
     "prepublish": "babel src -d lib",
     "eslint": "eslint '**/*.js' --ext '**/*.jsx'",
@@ -55,7 +55,8 @@
     "npmlog": "^4.1.2",
     "pretty-bytes": "^5.2.0",
     "speedline": "^1.4.2",
-    "truncate-url": "^1.0.0"
+    "truncate-url": "^1.0.0",
+    "lighthouse": "^5.6.0"
   },
   "husky": {
     "hooks": {
