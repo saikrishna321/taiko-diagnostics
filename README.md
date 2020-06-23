@@ -178,16 +178,16 @@ You should now have full access to all of the diagnostics in the taiko REPL wind
 ```js
 > openBrowser()
  ✔ Browser opened
-> startTracing()
+> diagnostics.startTracing()
  ✔ Browser tracing started
 > goto('https://github.com/');
  ✔ Navigated to url "https://github.com/"
-> endTracing();
+> diagnostics.endTracing();
  ✔ Browser tracing ended
-> getSpeedIndex();
+> diagnostics.getSpeedIndex();
 { speedIndex: 30631.375729995667,
   perceptualSpeedIndex: 30634.177980202476 }
-> getPerformanceMetrics();
+> diagnostics.getPerformanceMetrics();
 info Detected renderer thread by 'TracingStartedInBrowser' event: pid 69317, tid 775
 { firstPaint: 834.819,
   firstContentfulPaint: 834.821,
