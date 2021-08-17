@@ -6,6 +6,10 @@
   "files": [
     "lib"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saikrishna321/taiko-diagnostics.git"
+  },
   "scripts": {
     "test": "jest unit/__tests__/*.*.js --ci --reporters=default --reporters=jest-junit",
     "integration": "npm run build && npm install -g . && TAIKO_PLUGIN='taiko-diagnostics' JEST_JUNIT_OUTPUT='./int-junit.xml' jest integration/__tests__/**.spec.js --ci --reporters=default --reporters=jest-junit",
